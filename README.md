@@ -23,12 +23,6 @@ This repository contains coursework for MSSE 642 - Software Assurance at Regis U
 
 This repository uses GitHub Actions to automate workflows, including:
 
-- **Markdown Linting:** Automatically checks Markdown files for style and formatting issues on each push or pull request.
-- **CI/CD Workflows:** Ensures code quality and consistency by running automated checks.
-
-### Available Workflows
-
-- `.github/workflows/markdown-lint.yml`: Runs markdownlint on all Markdown files to enforce style and formatting.
-<!-- - `.github/workflows/ci.yml`: (If present) Runs tests and other CI checks to maintain code quality. -->
+- **Markdown Link Checking:** Automatically checks all Markdown files for broken links on each push or pull request.
 
 You can find workflow configuration files in the `.github/workflows/` directory.
