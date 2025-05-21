@@ -8,7 +8,7 @@
 2. **Extensions**
     - **Draw.io** _Replacing Excalidraw_  
       ![Draw.io Extension](assets/draw.jpg)
-    - **Git Lens** _Shows branch history_  
+    - **Git Lens** _Shows Git history_  
       ![Git Lens Extension](assets/gitLens.jpg)
     - **Python**  
       ![Python Extension](assets/pyton.jpg)
