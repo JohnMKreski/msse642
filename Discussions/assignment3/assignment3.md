@@ -4,25 +4,25 @@
 
 1. **Set user name and email:**
 
-   ```bash
-   git config --global user.name "Your Name"
-   git config --global user.email "your@email.com"
-   ```
+    ```bash
+    git config --global user.name "Your Name"
+    git config --global user.email "your@email.com"
+    ```
 
-   * Configure globally if you use the same identity across all repos. Use local config if identity differs per project.
+    *Configure globally if you use the same identity across all repos. Use local config if identity differs per project.*
 
 2. **Set core editor:**
 
-   ```bash
-   git config --global core.editor "code --wait"
-   ```
+    ```bash
+    git config --global core.editor "code --wait"
+    ```
 
 3. **View config settings:**
 
-   ```bash
-   git config --global --list
-   git config --local --list
-   ```
+    ```bash
+    git config --global --list
+    git config --local --list
+    ```
 
 ---
 
@@ -30,56 +30,56 @@
 
 4. **Create a new local repo:**
 
-   ```bash
-   mkdir my-repo
-   cd my-repo
-   git init
-   ```
+    ```bash
+    mkdir my-repo
+    cd my-repo
+    git init
+    ```
 
 5. **Clone a public repo:**
 
-   ```bash
-   git clone https://github.com/octocat/Hello-World.git
-   ```
+    ```bash
+    git clone https://github.com/octocat/Hello-World.git
+    ```
 
-   * *Cloning* copies an existing repo. *Creating* starts a new, empty repo.
+    *Cloning copies an existing repo. Creating starts a new, empty repo.*
 
 6. **Check status:**
 
-   ```bash
-   git status
-   ```
+    ```bash
+    git status
+    ```
 
-   * Shows modified, staged, or untracked files.
+    *Shows modified, staged, or untracked files.*
 
 7. **Stage changes:**
 
-   ```bash
-   git add filename.txt
-   ```
+    ```bash
+    git add filename.txt
+    ```
 
-   * *OR* to add all changes 
+    *OR to add all changes:*
 
-   ```bash
-   git add .
-   ````
+    ```bash
+    git add .
+    ```
 
 8. **Commit changes:**
 
-   ```bash
-   git commit -m "Commit message"
-   ```
+    ```bash
+    git commit -m "Commit message"
+    ```
 
 9. **Ignore files using `.gitignore`:**
 
-   ```plaintext
-   # .gitignore
-   *.log
-   node_modules/
-   .env
-   ```
+    ```plaintext
+    # .gitignore
+    *.log
+    node_modules/
+    .env
+    ```
 
-   * Ignore temp files, secrets, and build artifacts.
+    *Ignore temp files, secrets, and build artifacts.*
 
 10. **Delete tracked files using Git:**
 
@@ -104,7 +104,7 @@
     git fetch
     ```
 
-    * Downloads updates from remote but does not merge.
+    *Downloads updates from remote but does not merge.*
 
 13. **Fetch vs Pull:**
 
@@ -113,22 +113,27 @@
     git pull
     ```
 
-    * `fetch` only downloads; `pull` = `fetch` + `merge`.
+    *`fetch` only downloads; `pull` = `fetch` + `merge`.*
 
 14. **Sync local changes to remote:**
 
     ```bash
-    git add .
-    git commit -m "Update"
-    git push
-
     git checkout -b week4
-        Switched to a new branch 'week4'
+    # Switched to a new branch 'week4'
 
     git status
-        On branch week4
-        Untracked files:
-            Discussions/assignment3/
+    # On branch week4
+    # Untracked files:
+    #   Discussions/assignment3/
+
+    git add .
+
+    git commit -m "Initial assignment3 push"
+    # [week4 568890d] Initial assignment3 push
+    # 1 file changed, 158 insertions(+)
+    # create mode 100644 Discussions/assignment3/assignment3.md
+
+    git push origin week4
     ```
 
 ---
@@ -141,6 +146,8 @@
     git branch        # Before
     git branch feature-branch
     git branch        # After
+    # or 
+    git checkout -b feature-branch # Creates a new branch and switches to it
     ```
 
 16. **Switch to branch:**
