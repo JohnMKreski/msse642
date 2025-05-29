@@ -55,7 +55,7 @@ This report was researched and compiled using verified sources, with assistance 
 
 **References:**
 - [OWASP Top 10: Broken Access Control. (2021)](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
-- [OWASP Access Control Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Access_Control_Cheat_Sheet.html)
+- [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
 - [CNET: 4.6M Snapchat names and phone numbers leaked by hackers. (2014)](https://www.cnet.com/tech/mobile/)
 - [TechCrunch: Snapchat Hack. (2013)](https://techcrunch.com/2013/12/31/hackers-claim-to-publish-list-of-4-6m-snapchat-usernames-and-numbers/)
 - [Gibson Security: Full Disclosure. (2013)](https://gibsonsec.org/snapchat/fulldisclosure/)
