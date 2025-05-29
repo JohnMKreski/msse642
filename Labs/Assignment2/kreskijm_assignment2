@@ -1,0 +1,106 @@
+# MSSE642 Assignment 2: Threat Modeling
+
+## Part 1: Secure Design Document Overview
+
+### 1. Project Description (Hiking Club Application)
+The Hiking Club Application is a mission-critical web-based system for the Georgia Hiking Club, a nonprofit organization that coordinates hiking events for Atlanta-area residents and beyond. The club offers both free and paid excursions, with trip leaders and administrators managing event logistics and user participation through the app. The application supports user registration, profile management, event browsing, and payment handling, making it essential for the club’s operation. With a user base spanning various fitness levels, the application must balance ease of use with strong data protection for sensitive member information.
+
+### 2. Organization Description
+The Georgia Hiking Club is an all-volunteer nonprofit organization without a physical office. Club officers—including a CTO—manage the organization remotely. Funded by business sponsorships and annual membership fees, the club organizes guided hikes in Georgia and worldwide. Members range from casual walkers to elite athletes, and hike difficulty is matched to users based on fitness and experience.
+
+### 3. Deployment Environment
+The Hiking Club application will be deployed on a secure cloud-based infrastructure such as AWS, Azure, or Google Cloud Platform. The architecture will follow a standard multi-tier model with the following components:
+
+- **Frontend Web Server**: Hosted in a public-facing subnet behind a web application firewall (WAF). HTTPS is enforced using TLS certificates to encrypt all web traffic. A load balancer may be used to support high availability and scalability.
+- **Backend Database Server**: Deployed in a private subnet with no direct internet access. Access is restricted to the frontend server via security groups. Data at rest will be encrypted using database-native encryption features (e.g., AWS KMS for RDS).
+- **Authentication and Authorization**: Managed via a secure identity provider (e.g., OAuth2.0-compliant service or integrated SSO). Role-based access control is enforced across all application layers.
+- **Administrative Access**: Admins and trip leaders access the application via browser-based portals secured with HTTPS and protected by strong authentication mechanisms. Administrative endpoints are isolated behind a secondary firewall rule set or routed through a VPN.
+- **Monitoring and Logging**: A centralized logging service will collect application, access, and error logs. Monitoring tools will detect anomalous behavior or policy violations (e.g., AWS CloudWatch, Azure Monitor).
+- **Security Measures**: The infrastructure includes DDoS mitigation, intrusion detection systems (IDS), scheduled security updates, and automated backups. Periodic vulnerability scanning and security audits will be conducted.
+
+### 4. Secure Software Concepts
+- **Authentication**: The current system is vulnerable to brute-force attacks due to weak password policies. Stronger authentication methods (e.g., MFA, password complexity enforcement) are needed.
+- **Authorization**: Role-based access controls are critical. Only trip leaders and admins should view or edit sensitive medical and performance data.
+- **Data Confidentiality**: Member medical and behavioral data must be encrypted in transit and at rest, with restricted access.
+- **Input Validation**: Event registration and profile updates should enforce validation to prevent injection attacks.
+- **Audit Logging**: Logging user actions (e.g., profile edits, payment activity, event registration) can support accountability and incident response.
+- **Availability**: The platform must remain available to support event registration deadlines and real-time updates.
+
+---
+
+## Part 2: Hiking Club Threat Model Assessment
+
+### Part 2A: Architectural Diagram (Text Description)
+```
++----------------------------+
+|        Guest Client       |
+|      (Web Browser)        |
++-------------+-------------+
+              |
++-------------v-------------+
+|       Member Client       |
+|      (Web Browser)        |
++-------------+-------------+
+              |
++-------------v-------------+
+|       Admin Client        |
+|      (Web Browser)        |
++-------------+-------------+
+              |
+              v
++----------------------------+         TRUST BOUNDARY         +----------------------------+
+|     Frontend Web Server    | <--------------------------->  |    Backend Database Server |
+|  (Public Subnet, HTTPS,    |                               | (Private Subnet, No direct |
+|   Load Balancer, WAF)      |                               |      internet access)      |
++-------------+--------------+                               +----------------------------+
+              |
+              v
++-----------------------------+
+| Application & API Services |
+| (Handles auth, logic, etc.)|
++-----------------------------+
+```
+
+### Part 2B: STRIDE Threat Model
+
+- **Spoofing**: The lack of complex password enforcement makes user accounts vulnerable to brute-force attacks. Implementing CAPTCHA, MFA, and account lockouts after failed attempts can mitigate this.
+- **Tampering**: Admins or trip leaders may unintentionally or maliciously modify member data. Digital signatures, role separation, and write-audit logs can help preserve data integrity.
+- **Repudiation**: Without proper audit logs, a user could deny making a payment or changing a profile. Implementing comprehensive, non-editable activity logs is essential.
+- **Information Disclosure**: Unauthorized access to medical or behavioral notes poses a privacy risk. Implement encryption at rest and strict access roles.
+- **Denial of Service (DoS)**: The public-facing nature of the app exposes it to automated abuse. Throttling, rate limiting, and anomaly detection are needed.
+- **Elevation of Privilege**: A member might attempt to access admin or leader features. Enforce server-side privilege checks and limit exposure of sensitive endpoints.
+
+### Part 2C: OWASP Threat Model
+
+1. **Assessment Scope**:
+   - Sensitive personal data (medical history, performance notes)
+   - Payment and financial information
+   - Administrative privileges and user management functions
+   - Event registration and capacity logic
+
+2. **Vulnerabilities**:
+   - Weak authentication controls (e.g., no password complexity)
+   - Direct access to URLs without privilege validation
+   - SQL injection via profile or event submission forms
+   - Exposure of medical data due to misconfigured access controls
+
+3. **Countermeasures**:
+   - Require strong passwords and two-factor authentication
+   - Validate all inputs on both frontend and backend
+   - Use RBAC (Role-Based Access Control) with least privilege principles
+   - Encrypt medical and financial data
+   - Set up robust logging and monitoring
+
+4. **Prioritized Risks**:
+   1. Unauthorized access to medical/performance data (high)
+   2. Brute-force attacks on weak user accounts (high)
+   3. Unauthorized registration manipulation or refund requests (medium)
+   4. SQL injection in form inputs (medium)
+   5. Unlogged changes to sensitive data (low)
+
+---
+
+**References**:
+- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)
+- [OWASP Threat Modeling Guide](https://owasp.org/www-community/Application_Threat_Modeling)
+- [OWASP Wiki on Threat Modeling](https://wiki.owasp.org/index.php/Category:Threat_Modeling)
