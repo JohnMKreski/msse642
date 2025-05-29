@@ -64,6 +64,7 @@ Only staged files are included in the next commit.
 Here’s a simplified diagram of how Git works internally:
 
 ![Git Workflow](./assets/img/git.png)
+
 *Source: [GeeksforGeeks - Git Features](https://www.geeksforgeeks.org/git-features/)*
 
 ---
