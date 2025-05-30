@@ -31,35 +31,8 @@ The Hiking Club application will be deployed on a secure cloud-based infrastruct
 ## Part 2: Hiking Club Threat Model Assessment
 
 ### Part 2A: Architectural Diagram (Text Description)
-```
-+----------------------------+
-|        Guest Client       |
-|      (Web Browser)        |
-+-------------+-------------+
-              |
-+-------------v-------------+
-|       Member Client       |
-|      (Web Browser)        |
-+-------------+-------------+
-              |
-+-------------v-------------+
-|       Admin Client        |
-|      (Web Browser)        |
-+-------------+-------------+
-              |
-              v
-+----------------------------+         TRUST BOUNDARY         +----------------------------+
-|     Frontend Web Server    | <--------------------------->  |    Backend Database Server |
-|  (Public Subnet, HTTPS,    |                               | (Private Subnet, No direct |
-|   Load Balancer, WAF)      |                               |      internet access)      |
-+-------------+--------------+                               +----------------------------+
-              |
-              v
-+-----------------------------+
-| Application & API Services |
-| (Handles auth, logic, etc.)|
-+-----------------------------+
-```
+
+[Hiking Club Diagram](hikingclub.drawio)
 
 ### Part 2B: STRIDE Threat Model
 
