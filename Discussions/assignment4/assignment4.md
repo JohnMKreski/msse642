@@ -20,6 +20,8 @@ git add .
 git push origin assn4
 ```
 
+![Initial new branch screenshot](assets/initNewBranch.jpg)
+
 ### 4. Switch back to main and pull latest changes
 
 ```bash
