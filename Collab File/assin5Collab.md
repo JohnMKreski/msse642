@@ -20,6 +20,8 @@ This collaborative assignment demonstrates our ability to use GitHub for real-wo
 
 ## Noah
 
+Hello I'm Noah Iarrobino. I've been working as an iOS Engineer for Fidelity Investments for the past 4 years. I currently live in Brooklyn NY with my fiance and 2 cats.
+
 ---
 
 ## Ramesh
