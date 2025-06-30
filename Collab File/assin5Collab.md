@@ -16,7 +16,9 @@ This collaborative assignment demonstrates our ability to use GitHub for real-wo
 
 ## Jose
 
----
+06/29/2025
+
+Hello I am Jose Gracia Vallejo, I live in Texas with my wife and I am working for Charter Communications, I am doing this Master's because I am looking for opportunities in Software industry.
 
 ## Noah
 
